@@ -2,8 +2,6 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
-import 'package:palette_generator/palette_generator.dart';
-
 import '../../../../models/article.dart';
 import './recent_item.dart';
 import './grid_category_articles.dart';
@@ -23,27 +21,11 @@ class Edukasi extends StatefulWidget {
 }
 
 class _EdukasiState extends State<Edukasi> with TickerProviderStateMixin {
-  final List<PaletteColor> _colors = [];
   final PageController _pageController = PageController();
 
   @override
   void initState() {
-    _updateColors();
-
     super.initState();
-  }
-
-  Future<void> _updateColors() async {
-    for (var article in widget.listArticle!) {
-      final PaletteGenerator generator =
-          await PaletteGenerator.fromImageProvider(
-        const AssetImage('assets/images/logo_kab.png'),
-      );
-      _colors.add(generator.darkMutedColor == null
-          ? PaletteColor(Colors.black, 3)
-          : generator.darkMutedColor!);
-    }
-    print('jumlah color: $_colors');
   }
 
   int _currentRecentIndex = 1;
@@ -80,11 +62,11 @@ class _EdukasiState extends State<Edukasi> with TickerProviderStateMixin {
               height: widget.size.height * 0.8,
               width: widget.size.width * 2 / 3 * 2 / 3 - 20,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   InkWell(
                     onTap: () {},
-                    child: Container(
+                    child: SizedBox(
                       height: widget.size.height * 1 / 4.5,
                       width: widget.size.width * 2 / 3 * 3 / 5 - 30,
                       child: Stack(
@@ -99,9 +81,7 @@ class _EdukasiState extends State<Edukasi> with TickerProviderStateMixin {
                             itemBuilder: (context, index) => RecentItem(
                               listArticle: widget.listArticle,
                               articleIndex: index,
-                              tagColor: _colors.isEmpty
-                                  ? Colors.amber
-                                  : _colors[index].color,
+                              tagColor: Colors.black,
                             ),
                           ),
                           FittedBox(
@@ -136,7 +116,7 @@ class _EdukasiState extends State<Edukasi> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: widget.size.width * 2 / 3 * 3 / 5 - 30,
                     // height: widget.size.height * 0.5,
                     child: Column(

@@ -32,7 +32,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   gsheets: ^0.3.1
   http: ^0.13.3
-  palette_generator: ^0.3.0
   flutter_staggered_grid_view: ^0.4.0
 
 dev_dependencies:
