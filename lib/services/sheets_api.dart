@@ -8,11 +8,11 @@ class SheetApi {
   static const _credential = SecretKey.credential;
 
   static final _gsheets = GSheets(_credential);
-  static Worksheet? _sheetTest;
+  static Worksheet? _response;
 
   static Future init() async {
     final spreadsheet = await _gsheets.spreadsheet(_spreedSheetId);
-    _sheetTest = await _getWorkSheet(spreadsheet, sheetTitle: 'SheetTest');
+    _response = await _getWorkSheet(spreadsheet, sheetTitle: 'responses');
   }
 
   static Future<Worksheet?> _getWorkSheet(
@@ -26,13 +26,13 @@ class SheetApi {
     }
   }
 
-  static Future<Article?> getRow(int index) async {
-    if (_sheetTest == null) return null;
-    final jsonData = await _sheetTest!.values.map.row(index);
-    return jsonData == null ? null : Article.fromJson(jsonData);
-  }
-
-  static Future<Article?> getArticle() async {
-    return await SheetApi.getRow(2);
+  static Future<List<Article>> getAllRow() async {
+    List<Article> list = [];
+    if (_response == null) return [];
+    final jsonData = await _response!.values.map.allRows();
+    for (var i in jsonData!) {
+      list.add(Article.fromJson(i));
+    }
+    return list;
   }
 }

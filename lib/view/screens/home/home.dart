@@ -4,6 +4,7 @@ import '../../../services/sheets_api.dart';
 import '../../../models/article.dart';
 import '../../../services/email_api.dart';
 import './widgets/app_bar.dart' as appBar;
+import './widgets/edukasi.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,12 +13,12 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
-  Article? _article;
+class _HomeState extends State<Home> with TickerProviderStateMixin {
+  List<Article>? _article;
 
   @override
   void initState() {
-    SheetApi.getArticle().then((value) {
+    SheetApi.getAllRow().then((value) {
       _article = value;
       setState(() {});
     });
@@ -47,67 +48,70 @@ class _HomeState extends State<Home> {
     // TextEditingController nameController = TextEditingController();
     // TextEditingController messageController = TextEditingController();
 
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Container(
-          child: _article == null
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Container(
-                  height: size.height,
-                  width: size.width,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      appBar.AppBar(size: size),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 18, horizontal: 20),
-                        alignment: Alignment.center,
-                        width: size.width * 1 / 3,
-                        height: 64,
-                        child: TabBar(
-                            indicator: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              border: Border.all(color: Colors.grey),
-                              color: Colors.green[400],
+    final TabController _tabController = TabController(length: 3, vsync: this);
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Container(
+        child: _article == null
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Container(
+                height: size.height,
+                width: size.width,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    appBar.AppBar(size: size),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 18, horizontal: 20),
+                      alignment: Alignment.center,
+                      width: size.width * 2 / 5,
+                      height: 64,
+                      child: TabBar(
+                          controller: _tabController,
+                          indicator: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color: Colors.grey),
+                            color: Colors.green[400],
+                          ),
+                          labelPadding:
+                              const EdgeInsets.symmetric(horizontal: 30),
+                          labelColor: Colors.white,
+                          labelStyle: const TextStyle(fontSize: 13),
+                          unselectedLabelColor: Colors.black,
+                          unselectedLabelStyle: const TextStyle(fontSize: 11),
+                          tabs: const [
+                            Tab(
+                              text: 'Pengumuman',
                             ),
-                            labelPadding:
-                                const EdgeInsets.symmetric(horizontal: 30),
-                            labelColor: Colors.white,
-                            labelStyle: const TextStyle(fontSize: 13),
-                            unselectedLabelColor: Colors.black,
-                            unselectedLabelStyle: const TextStyle(fontSize: 11),
-                            tabs: const [
-                              Tab(
-                                text: 'Pengumuman',
-                              ),
-                              Tab(
-                                text: 'Edukasi',
-                              ),
-                              Tab(text: 'Reportase')
-                            ]),
-                      ),
-                      Container(
-                        height: size.height * 0.6,
-                        width: size.width,
-                        child: TabBarView(children: [
-                          Center(
-                            child: Text('Pengumuman screen'),
-                          ),
-                          Center(
-                            child: Text('Edukasi screen'),
-                          ),
-                          Center(
-                            child: Text('Reportase screen'),
-                          )
-                        ]),
-                      ),
-                      /* Text(_article!.title),
+                            Tab(
+                              text: 'Edukasi',
+                            ),
+                            Tab(text: 'Reportase')
+                          ]),
+                    ),
+                    Container(
+                      height: size.height * 0.8,
+                      width: size.width,
+                      color: Colors.grey.shade200,
+                      child: TabBarView(controller: _tabController, children: [
+                        Center(
+                          child: Text('Pengumuman screen'),
+                        ),
+                        Edukasi(
+                          size: size,
+                          listArticle: _article,
+                        ),
+                        Center(
+                          child: Text('Reportase screen'),
+                        )
+                      ]),
+                    ),
+                    /* Text(_article!.title),
                           Image.network(
                             "https://drive.google.com/uc?id=${_article!.imageUrl.split("=")[1]}",
                             height: size.height * 0.8,
@@ -173,10 +177,9 @@ class _HomeState extends State<Home> {
                               ],
                             ),
                           ) */
-                    ],
-                  ),
+                  ],
                 ),
-        ),
+              ),
       ),
     );
   }
