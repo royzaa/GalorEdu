@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../models/article.dart';
-import '../../../theme/gradient.dart';
+import '../../../../../models/article.dart';
+import '../../../../theme/gradient.dart';
 
 class RecentItem extends StatefulWidget {
   RecentItem(
@@ -30,7 +30,7 @@ class _RecentItemState extends State<RecentItem> {
           return e + '.';
         })
         .toList()
-        .sublist(0, 6)
+        .sublist(0, 4)
         .forEach((e) => _story += e);
     super.initState();
   }
@@ -84,48 +84,54 @@ class _RecentItemState extends State<RecentItem> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            ...widget.listArticle![widget.articleIndex]!.tags
-                                .split(',')
-                                .map(
-                                  (tag) => Card(
-                                    margin: const EdgeInsets.only(right: 3),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    color: widget.tagColor,
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 4, horizontal: 8),
-                                      child: Text(
-                                        tag.trim(),
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 8,
-                                          fontWeight: FontWeight.w500,
+                        Expanded(
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              ...widget.listArticle![widget.articleIndex]!.tags
+                                  .split(',')
+                                  .map(
+                                    (tag) => Card(
+                                      margin: const EdgeInsets.only(right: 3),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      color: widget.tagColor,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 4, horizontal: 8),
+                                        child: Text(
+                                          tag.trim(),
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 8,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                          ],
-                        ),
-                        Text(
-                          widget.listArticle![widget.articleIndex]!.title,
-                          style: TextStyle(
-                            color: widget.tagColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
+                            ],
                           ),
                         ),
-                        Text(
-                          _story,
-                          style: TextStyle(
+                        Expanded(
+                          child: Text(
+                            widget.listArticle![widget.articleIndex]!.title,
+                            style: TextStyle(
                               color: widget.tagColor,
-                              fontSize: size.height < 700 ? 10 : 12,
-                              fontFamily: 'Roboto'),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(
+                            _story,
+                            style: TextStyle(
+                                color: widget.tagColor,
+                                fontSize: size.height < 700 ? 10 : 12,
+                                fontFamily: 'Roboto'),
+                          ),
                         ),
                       ],
                     ),

@@ -57,7 +57,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             ? const Center(
                 child: CircularProgressIndicator(),
               )
-            : Container(
+            : SizedBox(
                 height: size.height,
                 width: size.width,
                 child: Column(
@@ -94,22 +94,24 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                             Tab(text: 'Reportase')
                           ]),
                     ),
-                    Container(
-                      height: size.height * 0.8,
-                      width: size.width,
-                      color: Colors.grey.shade200,
-                      child: TabBarView(controller: _tabController, children: [
-                        Center(
-                          child: Text('Pengumuman screen'),
-                        ),
-                        Edukasi(
-                          size: size,
-                          listArticle: _article,
-                        ),
-                        Center(
-                          child: Text('Reportase screen'),
-                        )
-                      ]),
+                    Expanded(
+                      child: Container(
+                        height: size.height * 0.85,
+                        width: size.width,
+                        color: Colors.grey.shade200,
+                        child:
+                            TabBarView(controller: _tabController, children: [
+                          Center(
+                            child: Text('Pengumuman screen'),
+                          ),
+                          Edukasi(
+                            listArticle: _article,
+                          ),
+                          Center(
+                            child: Text('Reportase screen'),
+                          )
+                        ]),
+                      ),
                     ),
                     /* Text(_article!.title),
                           Image.network(

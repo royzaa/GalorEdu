@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import '../../../../models/article.dart';
+import '../../../../../models/article.dart';
 import './category_article_item.dart';
 
 enum Category { kesehatan, pembelajaran, kreativitas, teknologi, ekonomi }
@@ -41,11 +41,12 @@ class GridCategoryArticles extends StatelessWidget {
       default:
     }
 
-    return listArticle!.isEmpty
+    return articleCat.isEmpty
         ? const Center(
             child: Text('Belum terdapat artikel tersedia'),
           )
         : StaggeredGridView.countBuilder(
+            physics: const BouncingScrollPhysics(),
             crossAxisCount: 3,
             crossAxisSpacing: 20,
             mainAxisSpacing: 20,

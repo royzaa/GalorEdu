@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../theme/gradient.dart';
+import '../../../../theme/gradient.dart';
 
 class CategoryArticleItem extends StatelessWidget {
   const CategoryArticleItem(
@@ -34,23 +34,25 @@ class CategoryArticleItem extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(15),
             alignment: Alignment.bottomLeft,
-            height: size.height * 0.09,
+            height: size.height * 0.12,
             width: size.width,
             decoration: BoxDecoration(
               gradient: MyGradients.whiteItemGradient,
               borderRadius: BorderRadius.circular(15),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: size.height < 700 ? 10 : 12,
-                      fontWeight: FontWeight.w500),
-                  textAlign: TextAlign.left,
+                Expanded(
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.height < 700 ? 10 : 12,
+                        fontWeight: FontWeight.w500),
+                    textAlign: TextAlign.left,
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
