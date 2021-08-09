@@ -26,27 +26,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     super.initState();
   }
 
-  final _formKey = GlobalKey<FormState>();
-
-  bool validate() {
-    bool status = false;
-    final form = _formKey.currentState;
-    if (form!.validate()) {
-      form.save();
-      status = true;
-    } else {
-      status = false;
-    }
-    return status;
-  }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    // TextEditingController subjectController = TextEditingController();
-    // TextEditingController emailController = TextEditingController();
-    // TextEditingController nameController = TextEditingController();
-    // TextEditingController messageController = TextEditingController();
 
     final TabController _tabController = TabController(length: 3, vsync: this);
 

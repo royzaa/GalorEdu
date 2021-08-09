@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../models/article.dart';
+import '../../../../../models/article.dart';
+import './contribute_modal.dart';
 
 class TopContributtors extends StatefulWidget {
   const TopContributtors({Key? key, required this.listArticle})
@@ -47,6 +48,7 @@ class _TopContributtorsState extends State<TopContributtors> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.all(15),
       color: Colors.white,
@@ -97,7 +99,16 @@ class _TopContributtorsState extends State<TopContributtors> {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                  isScrollControlled: true,
+                  backgroundColor: const Color.fromRGBO(0, 0, 0, 0),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  context: context,
+                  builder: (context) => const ContributeModal(),
+                );
+              },
               child: const Text(
                 'Submit blog',
                 style: TextStyle(color: Colors.white),

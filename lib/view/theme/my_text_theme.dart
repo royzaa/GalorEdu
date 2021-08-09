@@ -16,4 +16,7 @@ class MyTextTheme {
     color: Colors.black,
     fontWeight: FontWeight.w600,
   );
+  static const hintStyle = TextStyle(fontSize: 10, color: Colors.grey);
+  static const labelStyle = TextStyle(fontSize: 12, color: Colors.green);
+  static const inputStyle = TextStyle(fontSize: 12, color: Colors.black);
 }

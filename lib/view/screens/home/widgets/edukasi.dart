@@ -4,7 +4,7 @@ import 'package:flutter/painting.dart';
 import '../../../../models/article.dart';
 import './recent/recent_section.dart';
 import './category/category_section.dart';
-import './top_contributors.dart';
+import 'contributors/top_contributors.dart';
 import './recently_added.dart';
 
 class Edukasi extends StatelessWidget {

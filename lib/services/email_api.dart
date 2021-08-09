@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 import 'package:http/http.dart' as http;
 
 import './secret_key.dart';
@@ -9,6 +11,7 @@ class EmailApi {
       {required String name,
       required String email,
       required String subject,
+      required BuildContext context,
       required String message}) async {
     final url = Uri.parse(r'https://api.emailjs.com/api/v1.0/email/send');
     try {
@@ -31,9 +34,34 @@ class EmailApi {
       );
 
       if (response.statusCode == 200) {
-        print("email have been sent");
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            content: const Text("Email have been sent"),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text(
+                  'Ok',
+                  style: TextStyle(color: Colors.green),
+                ),
+              )
+            ],
+          ),
+        );
       } else {
         print("sent failed: ${response.statusCode}");
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            content: Text("sent failed: ${response.statusCode}"),
+            actions: [
+              TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: const Text('Ok'))
+            ],
+          ),
+        );
       }
     } catch (e) {
       print(e);

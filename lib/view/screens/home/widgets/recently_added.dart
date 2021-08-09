@@ -44,14 +44,14 @@ class RecentlyAdded extends StatelessWidget {
               itemBuilder: (context, index) => ListTile(
                 leading: CircleAvatar(
                   backgroundImage: NetworkImage(
-                      'https://drive.google.com/uc?id=${listArticle![index].imageUrl.split("=")[1]}'),
+                      'https://drive.google.com/uc?id=${listArticle!.reversed.toList()[index].imageUrl.split("=")[1]}'),
                 ),
                 title: Text(
-                  listArticle![index].title,
+                  listArticle!.reversed.toList()[index].title,
                   style: const TextStyle(fontSize: 11),
                 ),
                 subtitle: Text(
-                  listArticle![index].story.split('.')[0],
+                  listArticle!.reversed.toList()[index].story.split('.')[0],
                   style: const TextStyle(fontSize: 8),
                 ),
               ),
