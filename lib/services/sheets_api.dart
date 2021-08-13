@@ -22,7 +22,7 @@ class SheetApi {
     try {
       return await spreadsheet.addWorksheet(sheetTitle);
     } catch (e) {
-      return await spreadsheet.worksheetByTitle(sheetTitle);
+      return spreadsheet.worksheetByTitle(sheetTitle);
     }
   }
 

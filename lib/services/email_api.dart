@@ -50,7 +50,7 @@ class EmailApi {
           ),
         );
       } else {
-        print("sent failed: ${response.statusCode}");
+        debugPrint("sent failed: ${response.statusCode}");
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
@@ -64,7 +64,7 @@ class EmailApi {
         );
       }
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
   }
 }

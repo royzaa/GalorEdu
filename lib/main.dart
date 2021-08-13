@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './services/sheets_api.dart';
-import 'view/screens/home/home.dart';
+import './interface/screens/home/home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -47,7 +47,7 @@ class CategorySection extends StatelessWidget {
             ),
             SizedBox(
               width: size.width * 2 / 3 * 2 / 3 - 20,
-              height: size.height * 0.8,
+              height: size.height * 0.5,
               child: TabBarView(
                 children: [
                   GridCategoryArticles(

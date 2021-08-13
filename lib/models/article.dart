@@ -1,6 +1,8 @@
 class Article {
   final String imageUrl;
+  final String imaageSrc;
   final String story;
+  final String storyInHtml;
   final String topic;
   final String tags;
   final String title;
@@ -8,6 +10,7 @@ class Article {
   final String author;
   final String email;
   final int clickCount;
+  final String time;
   final String? programType;
 
   Article(
@@ -20,9 +23,13 @@ class Article {
       required this.story,
       required this.format,
       required this.clickCount,
+      required this.imaageSrc,
+      required this.storyInHtml,
+      required this.time,
       this.programType});
 
   static Article fromJson(Map<String, dynamic> json) => Article(
+        time: json['Tanggal'] ?? 'no date',
         imageUrl: json['Gambar'] ?? 'image not found',
         title: json['Judul'] ?? 'title not found',
         tags: json['Tags'] ?? 'tags not found',
@@ -31,6 +38,8 @@ class Article {
         format: json['Format'] ?? 'format not found',
         author: json['Penulis'] ?? 'anonymous',
         email: json['Email'] ?? 'anon@mail.com',
+        imaageSrc: json['Sumber gambar'] ?? 'sumber: google',
+        storyInHtml: json['Naskah dalam HTML'] ?? '404 not found',
         clickCount: 0,
         programType: json['Program kerja'] ?? 'program not found',
       );
