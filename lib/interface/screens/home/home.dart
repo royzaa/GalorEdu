@@ -32,7 +32,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     final TabController _tabController = TabController(length: 3, vsync: this);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       body: _article == null
           ? const Center(
               child: CircularProgressIndicator(),
@@ -53,6 +53,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       width: size.width * 2 / 5,
                       height: 64,
                       child: TabBar(
+                          isScrollable: true,
                           controller: _tabController,
                           indicator: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),

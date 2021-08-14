@@ -30,7 +30,7 @@ class _RecentItemState extends State<RecentItem> {
           return e + '.';
         })
         .toList()
-        .sublist(0, 4)
+        .sublist(0, 3)
         .forEach((e) => _story += e);
     super.initState();
   }
@@ -76,13 +76,13 @@ class _RecentItemState extends State<RecentItem> {
                 } else {
                   return Container(
                     padding: const EdgeInsets.only(
-                        bottom: 40, left: 20, right: 20, top: 20),
+                        bottom: 30, left: 20, right: 20, top: 20),
                     decoration: BoxDecoration(
                       gradient: MyGradients.whiteGradient,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      // mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
@@ -130,7 +130,7 @@ class _RecentItemState extends State<RecentItem> {
                             _story,
                             style: TextStyle(
                                 color: widget.tagColor,
-                                fontSize: size.height < 700 ? 10 : 12,
+                                fontSize: size.height < 700 ? 9 : 11,
                                 fontFamily: 'Roboto'),
                           ),
                         ),

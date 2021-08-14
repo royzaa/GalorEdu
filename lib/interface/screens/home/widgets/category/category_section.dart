@@ -21,6 +21,7 @@ class CategorySection extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const TabBar(
+              isScrollable: true,
               labelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
               unselectedLabelStyle:
                   TextStyle(fontSize: 12, fontWeight: FontWeight.w400),

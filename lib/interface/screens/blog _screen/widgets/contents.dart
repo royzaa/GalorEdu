@@ -170,10 +170,11 @@ class Contents extends StatelessWidget {
           const SizedBox(
             height: 25,
           ),
-          Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: constraints.width * 1 / 8),
+          Container(
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.only(right: constraints.width * 1 / 4.5),
             child: Html(
+              shrinkWrap: true,
               data: htmlStory,
               onLinkTap: (url, context, attribute, element) async {
                 await canLaunch(url!)

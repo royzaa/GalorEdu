@@ -31,36 +31,41 @@ class AppBar extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    'GalorEdu',
-                    style: MyTextTheme.webName,
-                  ),
-                ),
-                const SizedBox(
-                  width: 25,
-                ),
-                TextButton(
-                  onPressed: () {},
+                const Expanded(
                   child: FittedBox(
-                    fit: BoxFit.scaleDown,
                     child: Text(
-                      'Tentang kami',
-                      style: MyTextTheme.appBarMenu,
+                      'GalorEdu',
+                      style: MyTextTheme.webName,
                     ),
                   ),
                 ),
                 const SizedBox(
                   width: 25,
                 ),
-                TextButton(
-                  onPressed: () {},
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      'Program',
-                      style: MyTextTheme.appBarMenu,
+                Expanded(
+                  child: TextButton(
+                    onPressed: () {},
+                    child: FittedBox(
+                      //   fit: BoxFit.scaleDown,
+                      child: Text(
+                        'About',
+                        style: MyTextTheme.appBarMenu,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 25,
+                ),
+                Expanded(
+                  child: TextButton(
+                    onPressed: () {},
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        'Program',
+                        style: MyTextTheme.appBarMenu,
+                      ),
                     ),
                   ),
                 ),

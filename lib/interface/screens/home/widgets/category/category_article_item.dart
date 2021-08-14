@@ -61,7 +61,7 @@ class CategoryArticleItem extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(15),
             alignment: Alignment.bottomLeft,
-            height: size.height * 0.12,
+            height: size.height * 0.15,
             width: size.width,
             decoration: BoxDecoration(
               gradient: MyGradients.whiteItemGradient,
@@ -78,31 +78,37 @@ class CategoryArticleItem extends StatelessWidget {
                         color: Colors.white,
                         fontSize: size.height < 700 ? 10 : 12,
                         fontWeight: FontWeight.w500),
+                    maxLines: 2,
                     textAlign: TextAlign.left,
                   ),
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
                 Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       ...tags.split(',').map(
-                            (tag) => Card(
-                              margin: const EdgeInsets.only(right: 3),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              color: Colors.black,
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 3, horizontal: 6),
-                                child: FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: Text(
-                                    tag.trim(),
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 6,
-                                      fontWeight: FontWeight.w300,
+                            (tag) => Flexible(
+                              child: Card(
+                                margin: const EdgeInsets.only(right: 3),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                color: Colors.black,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 3, horizontal: 6),
+                                  child: FittedBox(
+                                    fit: BoxFit.cover,
+                                    child: Text(
+                                      tag.trim(),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: size.width < 1200 ? 6 : 8,
+                                        fontWeight: FontWeight.w300,
+                                      ),
                                     ),
                                   ),
                                 ),
