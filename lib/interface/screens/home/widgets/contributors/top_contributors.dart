@@ -70,8 +70,9 @@ class _TopContributtorsState extends State<TopContributtors> {
                       color: Colors.black,
                       fontSize: 13,
                       fontWeight: FontWeight.bold),
+                  maxLines: 1,
                 ),
-              )
+              ),
             ],
           ),
           const Divider(

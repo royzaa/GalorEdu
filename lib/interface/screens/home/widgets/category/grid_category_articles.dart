@@ -52,6 +52,7 @@ class GridCategoryArticles extends StatelessWidget {
             mainAxisSpacing: 20,
             itemCount: articleCat.length,
             itemBuilder: (context, index) => CategoryArticleItem(
+                linkYt: articleCat[index].linkYt,
                 author: articleCat[index].author,
                 htmlStory: articleCat[index].storyInHtml,
                 imageSource: articleCat[index].imaageSrc,

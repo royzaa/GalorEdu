@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../home/widgets/contributors/submit_blog.dart';
+import '../../home/widgets/contributors/contribute_modal.dart';
 
 class SecondAppBar extends StatelessWidget {
   const SecondAppBar({Key? key, required this.constraints}) : super(key: key);
@@ -19,7 +19,10 @@ class SecondAppBar extends StatelessWidget {
               children: const [
                 Icon(
                   Icons.arrow_back_ios_new_rounded,
-                  size: 16,
+                  size: 18,
+                ),
+                SizedBox(
+                  width: 8,
                 ),
                 Text(
                   'Back to home',
@@ -28,7 +31,30 @@ class SecondAppBar extends StatelessWidget {
               ],
             ),
           ),
-          const SubmitBlog(),
+          ElevatedButton(
+            onPressed: () {
+              showModalBottomSheet(
+                isScrollControlled: true,
+                backgroundColor: const Color.fromRGBO(0, 0, 0, 0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                context: context,
+                builder: (context) => const ContributeModal(),
+              );
+            },
+            child: const Text(
+              'Submit blog',
+              style: TextStyle(color: Colors.white),
+            ),
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              primary: Colors.green[300],
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            ),
+          ),
         ],
       ),
     );

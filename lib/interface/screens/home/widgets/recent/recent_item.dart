@@ -41,115 +41,111 @@ class _RecentItemState extends State<RecentItem> {
     String imageUrl =
         'https://drive.google.com/uc?id=${widget.listArticle![widget.articleIndex]!.imageUrl.split("=")[1]}';
 
-    return Expanded(
-      child: Container(
-          width: size.width * 2 / 3 * 3 / 5 - 20,
-          height: size.height * 1 / 10,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  imageUrl,
-                  fit: BoxFit.cover,
-                  height: size.height * 0.3,
-                  width: size.width * 2 / 3 * 2 / 3 - 20,
-                  loadingBuilder: (BuildContext context, Widget child,
-                      ImageChunkEvent? loadingProgress) {
-                    if (loadingProgress == null) {
-                      return child;
-                    }
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  },
-                ),
+    return Container(
+        width: size.width * 2 / 3 * 3 / 5 - 20,
+        height: size.height * 1 / 10,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+                height: size.height * 0.3,
+                width: size.width * 2 / 3 * 2 / 3 - 20,
+                loadingBuilder: (BuildContext context, Widget child,
+                    ImageChunkEvent? loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
               ),
-              FutureBuilder(
-                builder: (context, snapshot) {
-                  if (snapshot.data != 0) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else {
-                    return Container(
-                      padding: const EdgeInsets.only(
-                          bottom: 40, left: 20, right: 20, top: 20),
-                      decoration: BoxDecoration(
-                        gradient: MyGradients.whiteGradient,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                ...widget
-                                    .listArticle![widget.articleIndex]!.tags
-                                    .split(',')
-                                    .map(
-                                      (tag) => Card(
-                                        margin: const EdgeInsets.only(right: 3),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        color: widget.tagColor,
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 4, horizontal: 8),
-                                          child: Text(
-                                            tag.trim(),
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 8,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+            ),
+            FutureBuilder(
+              builder: (context, snapshot) {
+                if (snapshot.data != 0) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return Container(
+                    padding: const EdgeInsets.only(
+                        bottom: 40, left: 20, right: 20, top: 20),
+                    decoration: BoxDecoration(
+                      gradient: MyGradients.whiteGradient,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              ...widget.listArticle![widget.articleIndex]!.tags
+                                  .split(',')
+                                  .map(
+                                    (tag) => Card(
+                                      margin: const EdgeInsets.only(right: 3),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      color: widget.tagColor,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 4, horizontal: 8),
+                                        child: Text(
+                                          tag.trim(),
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 8,
+                                            fontWeight: FontWeight.w500,
                                           ),
                                         ),
                                       ),
                                     ),
-                              ],
+                                  ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(
+                            widget.listArticle![widget.articleIndex]!.title,
+                            style: TextStyle(
+                              color: widget.tagColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
-                          Expanded(
-                            child: Text(
-                              widget.listArticle![widget.articleIndex]!.title,
-                              style: TextStyle(
+                        ),
+                        Expanded(
+                          child: Text(
+                            _story,
+                            style: TextStyle(
                                 color: widget.tagColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
+                                fontSize: size.height < 700 ? 10 : 12,
+                                fontFamily: 'Roboto'),
                           ),
-                          Expanded(
-                            child: Text(
-                              _story,
-                              style: TextStyle(
-                                  color: widget.tagColor,
-                                  fontSize: size.height < 700 ? 10 : 12,
-                                  fontFamily: 'Roboto'),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-                },
-                future: Future.delayed(
-                    Duration(milliseconds: widget.articleIndex == 0 ? 2000 : 0),
-                    () {
-                  return 0;
-                }),
-              )
-            ],
-          )),
-    );
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              },
+              future: Future.delayed(
+                  Duration(milliseconds: widget.articleIndex == 0 ? 2000 : 0),
+                  () {
+                return 0;
+              }),
+            )
+          ],
+        ));
   }
 }

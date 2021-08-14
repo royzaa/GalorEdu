@@ -16,6 +16,7 @@ class Contents extends StatelessWidget {
     required this.htmlStory,
     required this.timeStamp,
     required this.author,
+    required this.linkYt,
   }) : super(key: key);
   final Size constraints;
   final String imageUrl;
@@ -25,64 +26,65 @@ class Contents extends StatelessWidget {
   final String htmlStory;
   final String timeStamp;
   final String author;
+  final String linkYt;
 
   @override
   Widget build(BuildContext context) {
-    String getPostDate() {
-      print('time:' + timeStamp);
-      String? postDate;
+    // String getPostDate() {
+    //   print('time:' + timeStamp);
+    //   String? postDate;
 
-      var splitByTimeUnit = timeStamp.split('/');
+    //   var splitByTimeUnit = timeStamp.split('/');
 
-      int monthInNumber = int.parse(splitByTimeUnit[1]);
+    //   int monthInNumber = int.parse(splitByTimeUnit[1]);
 
-      String month = '';
+    //   String month = '';
 
-      switch (monthInNumber) {
-        case 1:
-          month = 'Januari';
-          break;
-        case 2:
-          month = 'Februari';
-          break;
-        case 3:
-          month = 'Maret';
-          break;
-        case 4:
-          month = 'April';
-          break;
-        case 5:
-          month = 'Mei';
-          break;
-        case 6:
-          month = 'Juni';
-          break;
-        case 7:
-          month = 'Juli';
-          break;
-        case 8:
-          month = 'Agustus';
-          break;
-        case 9:
-          month = 'September';
-          break;
-        case 10:
-          month = 'Oktober';
-          break;
-        case 11:
-          month = 'November';
-          break;
-        case 12:
-          month = 'Desember';
-          break;
-        default:
-          month = 'Desember';
-      }
+    //   switch (monthInNumber) {
+    //     case 1:
+    //       month = 'Januari';
+    //       break;
+    //     case 2:
+    //       month = 'Februari';
+    //       break;
+    //     case 3:
+    //       month = 'Maret';
+    //       break;
+    //     case 4:
+    //       month = 'April';
+    //       break;
+    //     case 5:
+    //       month = 'Mei';
+    //       break;
+    //     case 6:
+    //       month = 'Juni';
+    //       break;
+    //     case 7:
+    //       month = 'Juli';
+    //       break;
+    //     case 8:
+    //       month = 'Agustus';
+    //       break;
+    //     case 9:
+    //       month = 'September';
+    //       break;
+    //     case 10:
+    //       month = 'Oktober';
+    //       break;
+    //     case 11:
+    //       month = 'November';
+    //       break;
+    //     case 12:
+    //       month = 'Desember';
+    //       break;
+    //     default:
+    //       month = 'Desember';
+    //   }
 
-      postDate = splitByTimeUnit[0] + month + splitByTimeUnit[2];
-      print('post date:' + postDate);
-      return postDate;
-    }
+    //   postDate = splitByTimeUnit[0] + month + splitByTimeUnit[2];
+    //   print('post date:' + postDate);
+    //   return postDate;
+    // }
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: constraints.width * 1 / 6),
@@ -138,19 +140,26 @@ class Contents extends StatelessWidget {
             height: 20,
           ),
           Stack(
+            alignment: Alignment.center,
+            clipBehavior: Clip.none,
             children: [
+              Image.network(
+                  'https://drive.google.com/uc?id=${imageUrl.split("=")[1]}'),
               Positioned(
                 top: -15,
                 child: Container(
                   decoration: BoxDecoration(
+                    color: Colors.green[300],
                     shape: BoxShape.circle,
                     border: Border.all(color: Colors.white, width: 2.0),
                   ),
-                  child: const Icon(Icons.person),
+                  child: const Icon(
+                    Icons.person,
+                    size: 36,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              Image.network(
-                  'https://drive.google.com/uc?id=${imageUrl.split("=")[1]}'),
             ],
           ),
           Text(
@@ -173,6 +182,29 @@ class Contents extends StatelessWidget {
               },
             ),
           ),
+          const SizedBox(
+            height: 30,
+          ),
+          linkYt == ''
+              ? const SizedBox()
+              : Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: constraints.width * 1 / 8),
+                  child: const Text(
+                      'Untuk menambah wawasan kita tentang topik di atas ayo tonton video ini!'),
+                ),
+          const SizedBox(
+            height: 20,
+          ),
+          linkYt == ''
+              ? const SizedBox()
+              : Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: constraints.width * 1 / 8),
+                  child: Html(
+                      data:
+                          """<iframe width="560" height="315" src="https://www.youtube.com/embed/${linkYt.split('/')[3].split('=')[1]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>"""),
+                )
         ],
       ),
     );

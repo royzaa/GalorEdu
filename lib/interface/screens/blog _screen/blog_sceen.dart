@@ -14,6 +14,7 @@ class BlogScreen extends StatelessWidget {
     required this.htmlStory,
     required this.timeStamp,
     required this.author,
+    required this.linkYt,
   }) : super(key: key);
 
   final String imageUrl;
@@ -23,6 +24,7 @@ class BlogScreen extends StatelessWidget {
   final String htmlStory;
   final String timeStamp;
   final String author;
+  final String linkYt;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +45,7 @@ class BlogScreen extends StatelessWidget {
               height: 25,
             ),
             Contents(
+                linkYt: linkYt,
                 constraints: size,
                 imageSource: imageSource,
                 imageUrl: imageUrl,

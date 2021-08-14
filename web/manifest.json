@@ -1,11 +1,11 @@
 {
-    "name": "galoredu",
-    "short_name": "galoredu",
+    "name": "Galoredu",
+    "short_name": "Galoredu",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Website edukasi Purbalingga Lor.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
