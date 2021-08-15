@@ -29,7 +29,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    final TabController _tabController = TabController(length: 3, vsync: this);
+    final TabController _tabController =
+        TabController(length: 3, vsync: this, initialIndex: 1);
 
     return Scaffold(
       backgroundColor: Colors.transparent,
