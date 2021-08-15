@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../home/widgets/app_bar.dart' as app_bar;
 import './widgets/second_app_bar.dart';
 import './widgets/contents.dart';
+import '../../footer.dart';
 
 class BlogScreen extends StatelessWidget {
   const BlogScreen({
@@ -35,7 +36,7 @@ class BlogScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            app_bar.AppBar(size: size),
+            size.width < 800 ? const SizedBox() : app_bar.AppBar(size: size),
             SecondAppBar(constraints: size),
             const Divider(
               color: Colors.grey,
@@ -57,24 +58,7 @@ class BlogScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            Container(
-              color: Colors.black87,
-              width: size.width,
-              height: size.height * 0.15,
-              child: Center(
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.green),
-                  child: const Text(
-                    'Purbalingga Lor - 2021',
-                    style: TextStyle(fontSize: 12, color: Colors.white),
-                  ),
-                ),
-              ),
-            )
+            const Footer(),
           ],
         ),
       ),
