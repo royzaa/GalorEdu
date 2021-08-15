@@ -31,7 +31,7 @@ class AppBar extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Expanded(
+                const Flexible(
                   child: FittedBox(
                     child: Text(
                       'GalorEdu',
@@ -42,7 +42,7 @@ class AppBar extends StatelessWidget {
                 const SizedBox(
                   width: 25,
                 ),
-                Expanded(
+                Flexible(
                   child: TextButton(
                     onPressed: () {},
                     child: FittedBox(
@@ -57,7 +57,7 @@ class AppBar extends StatelessWidget {
                 const SizedBox(
                   width: 25,
                 ),
-                Expanded(
+                Flexible(
                   child: TextButton(
                     onPressed: () {},
                     child: FittedBox(

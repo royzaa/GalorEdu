@@ -46,23 +46,27 @@ class CategorySection extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            SizedBox(
-              width: size.width * 2 / 3 * 2 / 3 - 20,
-              height: size.height * 0.5,
-              child: TabBarView(
-                children: [
-                  GridCategoryArticles(
-                      listArticle: listArticle, category: Category.kesehatan),
-                  GridCategoryArticles(
-                      listArticle: listArticle,
-                      category: Category.pembelajaran),
-                  GridCategoryArticles(
-                      listArticle: listArticle, category: Category.kreativitas),
-                  GridCategoryArticles(
-                      listArticle: listArticle, category: Category.ekonomi),
-                  GridCategoryArticles(
-                      listArticle: listArticle, category: Category.pembelajaran)
-                ],
+            Flexible(
+              child: SizedBox(
+                width: size.width * 2 / 3 * 2 / 3 - 20,
+                height: size.height * 0.55,
+                child: TabBarView(
+                  children: [
+                    GridCategoryArticles(
+                        listArticle: listArticle, category: Category.kesehatan),
+                    GridCategoryArticles(
+                        listArticle: listArticle,
+                        category: Category.pembelajaran),
+                    GridCategoryArticles(
+                        listArticle: listArticle,
+                        category: Category.kreativitas),
+                    GridCategoryArticles(
+                        listArticle: listArticle, category: Category.ekonomi),
+                    GridCategoryArticles(
+                        listArticle: listArticle,
+                        category: Category.pembelajaran)
+                  ],
+                ),
               ),
             )
           ],

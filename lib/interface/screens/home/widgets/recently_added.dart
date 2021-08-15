@@ -39,9 +39,9 @@ class RecentlyAdded extends StatelessWidget {
             thickness: 1,
             color: Colors.black87,
           ),
-          Expanded(
+          Flexible(
             child: SizedBox(
-              height: 200,
+              height: 250,
               child: ListView.builder(
                 itemCount: 3,
                 itemBuilder: (context, index) => ListTile(

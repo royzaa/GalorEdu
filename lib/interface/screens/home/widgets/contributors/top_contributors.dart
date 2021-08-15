@@ -79,9 +79,9 @@ class _TopContributtorsState extends State<TopContributtors> {
             thickness: 1,
             color: Colors.black87,
           ),
-          Expanded(
+          Flexible(
             child: SizedBox(
-              height: 150,
+              height: 200,
               child: ListView.builder(
                 itemCount: 3,
                 itemBuilder: (context, index) => ListTile(

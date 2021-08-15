@@ -45,7 +45,7 @@ class Edukasi extends StatelessWidget {
           Container(
             width: size.width * 2 / 3 * 1 / 3 - 20,
             // height: size.height * 0.9,
-            padding: const EdgeInsets.only(top: 10),
+            //  padding: const EdgeInsets.only(top: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -61,11 +61,11 @@ class Edukasi extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                Expanded(child: TopContributtors(listArticle: listArticle)),
+                Flexible(child: TopContributtors(listArticle: listArticle)),
                 const SizedBox(
                   height: 30,
                 ),
-                Expanded(child: RecentlyAdded(listArticle: listArticle)),
+                Flexible(child: RecentlyAdded(listArticle: listArticle)),
                 const SizedBox(
                   height: 40,
                 ),
