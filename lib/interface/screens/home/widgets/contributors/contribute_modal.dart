@@ -5,13 +5,72 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../services/email_api.dart';
 import '../../../../Theme/my_text_theme.dart';
 
+final _formKey = GlobalKey<FormState>();
+
 class ContributeModal extends StatelessWidget {
   const ContributeModal({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
+    Size size = MediaQuery.of(context).size;
 
+    final TextEditingController subjectController = TextEditingController();
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController messageController = TextEditingController();
+
+    Widget makeDismissable({required Widget child}) => GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () => Navigator.pop(context),
+          child: child,
+        );
+
+    return size.width < 550
+        ? makeDismissable(
+            child: DraggableScrollableSheet(
+                initialChildSize: 0.15,
+                maxChildSize: 1.4,
+                minChildSize: 0.08,
+                builder: (_, controller) => DesktopContributeModal(
+                    scrollController: controller,
+                    size: size,
+                    subjectController: subjectController,
+                    emailController: emailController,
+                    nameController: nameController,
+                    messageController: messageController)),
+          )
+        : DesktopContributeModal(
+            scrollController: ScrollController(),
+            size: size,
+            subjectController: subjectController,
+            emailController: emailController,
+            nameController: nameController,
+            messageController: messageController);
+  }
+}
+
+// desktop modal bottom sheet
+
+class DesktopContributeModal extends StatelessWidget {
+  const DesktopContributeModal({
+    Key? key,
+    required this.size,
+    required this.subjectController,
+    required this.emailController,
+    required this.nameController,
+    required this.messageController,
+    required this.scrollController,
+  }) : super(key: key);
+
+  final Size size;
+  final TextEditingController subjectController;
+  final TextEditingController emailController;
+  final TextEditingController nameController;
+  final TextEditingController messageController;
+  final ScrollController scrollController;
+
+  @override
+  Widget build(BuildContext context) {
     bool validate() {
       bool status = false;
       final form = _formKey.currentState;
@@ -24,13 +83,6 @@ class ContributeModal extends StatelessWidget {
       return status;
     }
 
-    Size size = MediaQuery.of(context).size;
-
-    final TextEditingController subjectController = TextEditingController();
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController nameController = TextEditingController();
-    final TextEditingController messageController = TextEditingController();
-
     return Container(
       decoration: const BoxDecoration(
           borderRadius: BorderRadius.vertical(
@@ -38,11 +90,12 @@ class ContributeModal extends StatelessWidget {
           ),
           color: Colors.white),
       margin: EdgeInsets.only(
-        right: size.width * 1 / 6 - 20,
-        left: size.width * (4 / 9 + 1 / 6) - 20,
+        right: size.width < 550 ? 0 : size.width * 1 / 6 - 20,
+        left: size.width < 550 ? 0 : size.width * (4 / 9 + 1 / 6) - 20,
       ),
-      child: Container(
-        padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
+      child: SingleChildScrollView(
+        controller: scrollController,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import './services/sheets_api.dart';
 import './models/article.dart';
 import './interface/screens/home/home.dart';
-import './interface/screens/mobile/home_mobile/home_mobile.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

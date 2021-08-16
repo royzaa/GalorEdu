@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:galoredu/interface/screens/mobile/about_mobile/about_mobile.dart';
-
 import '../../../../../theme/gradient.dart';
 import '../../../../../Theme/drop_shadow_theme.dart';
 import '../../../../blog _screen/blog_sceen.dart';

@@ -6,7 +6,7 @@ import '../../../../models/article.dart';
 import '../about_mobile/about_mobile.dart';
 import '../program_mobile/program_mobile.dart';
 import './widgets/category/list_category_article.dart';
-import './widgets/contributors/contribute_modal.dart';
+import '../../home/widgets/contributors/contribute_modal.dart';
 import './widgets/contributors/top_contributors.dart';
 import './widgets/recently_added.dart';
 import '../../../footer.dart';

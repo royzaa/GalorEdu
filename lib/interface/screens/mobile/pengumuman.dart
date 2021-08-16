@@ -5,8 +5,8 @@ class Pengumuman extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: const Text("Belum ada pengumuman"),
+    return const Center(
+      child: Text("Belum ada pengumuman"),
     );
   }
 }
