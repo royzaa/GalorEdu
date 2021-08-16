@@ -64,8 +64,7 @@ class CategorySection extends StatelessWidget {
                     GridCategoryArticles(
                         listArticle: listArticle, category: Category.ekonomi),
                     GridCategoryArticles(
-                        listArticle: listArticle,
-                        category: Category.pembelajaran)
+                        listArticle: listArticle, category: Category.teknologi)
                   ],
                 ),
               ),

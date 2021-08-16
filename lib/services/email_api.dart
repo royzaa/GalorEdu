@@ -37,7 +37,10 @@ class EmailApi {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            content: const Text("Email have been sent"),
+            content: const Text(
+              "Pesanmu sudah terkirim ke admin 😉",
+              style: TextStyle(fontSize: 13),
+            ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(context).pop(),
@@ -50,11 +53,15 @@ class EmailApi {
           ),
         );
       } else {
-        debugPrint("sent failed: ${response.statusCode}");
+        debugPrint(
+            "Yahh gagal terkirim 🙁, silakan coba lagi: ${response.statusCode}");
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            content: Text("sent failed: ${response.statusCode}"),
+            content: Text(
+              "Yahh gagal terkirim 🙁, silakan coba lagi: ${response.statusCode}",
+              style: const TextStyle(fontSize: 13),
+            ),
             actions: [
               TextButton(
                   onPressed: () => Navigator.of(context).pop(),
