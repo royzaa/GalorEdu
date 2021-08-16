@@ -48,7 +48,7 @@ class _TopContributtorsState extends State<TopContributtors> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Colors.transparent,
       child: Column(
         children: [
           Row(
@@ -81,6 +81,7 @@ class _TopContributtorsState extends State<TopContributtors> {
             child: SizedBox(
               height: 200,
               child: ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: 3,
                 itemBuilder: (context, index) => ListTile(
                   leading: ClipRRect(

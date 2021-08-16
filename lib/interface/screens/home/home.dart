@@ -25,7 +25,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         ? const Center(
             child: CircularProgressIndicator(),
           )
-        : size.width < 800
+        : size.width < 550
             ? MainMobile(listArticle: widget.listArticle)
             : Scaffold(
                 backgroundColor: Colors.transparent,

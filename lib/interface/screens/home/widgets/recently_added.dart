@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../models/article.dart';
+import '../../blog _screen/blog_sceen.dart';
 
 class RecentlyAdded extends StatelessWidget {
   const RecentlyAdded({Key? key, required this.listArticle}) : super(key: key);
@@ -9,7 +10,9 @@ class RecentlyAdded extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var listReversed = listArticle!.reversed.toList();
     return Container(
+      height: 350,
       color: Colors.white,
       padding: const EdgeInsets.all(15),
       child: Column(
@@ -24,7 +27,7 @@ class RecentlyAdded extends StatelessWidget {
               SizedBox(
                 width: 10,
               ),
-              Expanded(
+              Flexible(
                 child: Text(
                   'Recently added',
                   style: TextStyle(
@@ -41,20 +44,36 @@ class RecentlyAdded extends StatelessWidget {
           ),
           Flexible(
             child: SizedBox(
-              height: 250,
+              height: 300,
               child: ListView.builder(
                 itemCount: 3,
                 itemBuilder: (context, index) => ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => BlogScreen(
+                            imageSource: listReversed[index].imaageSrc,
+                            imageUrl:
+                                'https://drive.google.com/uc?id=${listReversed[index].imageUrl.split("=")[1]}',
+                            tags: listReversed[index].tags,
+                            title: listReversed[index].title,
+                            htmlStory: listReversed[index].storyInHtml,
+                            timeStamp: listReversed[index].time,
+                            author: listReversed[index].author,
+                            linkYt: listReversed[index].linkYt),
+                      ),
+                    );
+                  },
                   leading: CircleAvatar(
                     backgroundImage: NetworkImage(
-                        'https://drive.google.com/uc?id=${listArticle!.reversed.toList()[index].imageUrl.split("=")[1]}'),
+                        'https://drive.google.com/uc?id=${listReversed[index].imageUrl.split("=")[1]}'),
                   ),
                   title: Text(
-                    listArticle!.reversed.toList()[index].title,
+                    listReversed[index].title,
                     style: const TextStyle(fontSize: 11),
                   ),
                   subtitle: Text(
-                    listArticle!.reversed.toList()[index].story.split('.')[0],
+                    listReversed[index].story.split('.')[0],
                     style: const TextStyle(fontSize: 8),
                   ),
                 ),

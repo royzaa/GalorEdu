@@ -23,55 +23,62 @@ class Edukasi extends StatelessWidget {
       // height: size.height * 0.8,
       width: size.width * 2 / 3,
       padding: EdgeInsets.only(
-          right: size.width * 1 / 6, left: size.width * 1 / 6, top: 20),
+          right: size.width < 950 ? size.width * 1 / 8 : size.width * 1 / 6,
+          left: size.width < 950 ? size.width * 1 / 8 : size.width * 1 / 6,
+          top: 20),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(
-            // height: size.height * 0.8,
-            width: size.width * 2 / 3 * 2 / 3 - 20,
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                RecentSection(listArticle: listArticle),
-                const SizedBox(
-                  height: 15,
-                ),
-                CategorySection(listArticle: listArticle)
-              ],
+          Flexible(
+            child: SizedBox(
+              width: size.width < 950
+                  ? size.width
+                  : size.width * 2 / 3 * 2 / 3 - 20,
+              child: Column(
+                children: [
+                  Flexible(child: RecentSection(listArticle: listArticle)),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  CategorySection(listArticle: listArticle)
+                ],
+              ),
             ),
           ),
-          Container(
-            width: size.width * 2 / 3 * 1 / 3 - 20,
-            // height: size.height * 0.9,
-            //  padding: const EdgeInsets.only(top: 10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'Search',
-                    fillColor: Colors.white,
-                    filled: true,
-                    border: InputBorder.none,
-                    suffixIcon: Icon(Icons.search),
+          size.width < 950
+              ? const SizedBox()
+              : SizedBox(
+                  width: size.width * 2 / 3 * 1 / 3 - 20,
+                  // height: size.height * 0.9,
+                  //  padding: const EdgeInsets.only(top: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'Search',
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: InputBorder.none,
+                          suffixIcon: Icon(Icons.search),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Flexible(
+                          child: TopContributtors(listArticle: listArticle)),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Flexible(child: RecentlyAdded(listArticle: listArticle)),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Flexible(child: TopContributtors(listArticle: listArticle)),
-                const SizedBox(
-                  height: 30,
-                ),
-                Flexible(child: RecentlyAdded(listArticle: listArticle)),
-                const SizedBox(
-                  height: 40,
-                ),
-              ],
-            ),
-          )
+                )
         ],
       ),
     );

@@ -87,7 +87,12 @@ class Contents extends StatelessWidget {
     // }
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: constraints.width * 1 / 6),
+      padding: EdgeInsets.symmetric(
+          horizontal: constraints.width < 550
+              ? 20
+              : constraints.width < 950
+                  ? constraints.width * 1 / 15
+                  : constraints.width * 1 / 6),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -172,7 +177,10 @@ class Contents extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(right: constraints.width * 1 / 4.5),
+            padding: EdgeInsets.only(
+                right: constraints.width < 950
+                    ? constraints.width * 1 / 3.25
+                    : constraints.width * 1 / 4.5),
             child: Html(
               shrinkWrap: true,
               data: htmlStory,

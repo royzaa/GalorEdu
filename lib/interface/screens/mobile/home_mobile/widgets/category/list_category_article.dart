@@ -50,6 +50,7 @@ class ListCategoryArticle extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: articleCat.length,
             itemBuilder: (context, index) => ArticleItem(
+                margin: EdgeInsets.only(right: 20, left: index == 0 ? 20 : 0),
                 linkYt: articleCat[index].linkYt,
                 author: articleCat[index].author,
                 htmlStory: articleCat[index].storyInHtml,

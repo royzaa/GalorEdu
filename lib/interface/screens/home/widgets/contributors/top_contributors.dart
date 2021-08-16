@@ -50,6 +50,7 @@ class _TopContributtorsState extends State<TopContributtors> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(15),
+      height: 270,
       color: Colors.white,
       child: Column(
         children: [
@@ -63,7 +64,7 @@ class _TopContributtorsState extends State<TopContributtors> {
               SizedBox(
                 width: 10,
               ),
-              Expanded(
+              Flexible(
                 child: Text(
                   'Top Contributors',
                   style: TextStyle(

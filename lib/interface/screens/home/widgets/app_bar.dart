@@ -25,76 +25,84 @@ class AppBar extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: size.width * 1 / 6),
       child: Row(
         children: [
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 12.0),
-            width: size.width * 2 / 3 * 1 / 2,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Flexible(
-                  child: FittedBox(
-                    child: Text(
-                      'GalorEdu',
-                      style: MyTextTheme.webName,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 25,
-                ),
-                Flexible(
-                  child: TextButton(
-                    onPressed: () {},
+          Flexible(
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              width: size.width * 2 / 3 * 1 / 2,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Flexible(
                     child: FittedBox(
-                      //   fit: BoxFit.scaleDown,
                       child: Text(
-                        'About',
-                        style: MyTextTheme.appBarMenu,
+                        'GalorEdu',
+                        style: MyTextTheme.webName,
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  width: 25,
-                ),
-                Flexible(
-                  child: TextButton(
-                    onPressed: () {},
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  Flexible(
+                    child: TextButton(
+                      onPressed: () {},
+                      child: FittedBox(
+                        //   fit: BoxFit.scaleDown,
+                        child: Text(
+                          'About',
+                          style: MyTextTheme.appBarMenu,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  Flexible(
+                    child: TextButton(
+                      onPressed: () {},
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          'Program',
+                          style: MyTextTheme.appBarMenu,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Flexible(
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              width: size.width * 2 / 3 * 1 / 2,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const Flexible(
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
-                        'Program',
-                        style: MyTextTheme.appBarMenu,
+                        'Kelurahan Purbalingga Lor',
+                        style: MyTextTheme.village,
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 12.0),
-            width: size.width * 2 / 3 * 1 / 2,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                const FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    'Kelurahan Purbalingga Lor',
-                    style: MyTextTheme.village,
+                  const SizedBox(
+                    width: 25,
                   ),
-                ),
-                const SizedBox(
-                  width: 25,
-                ),
-                Image.asset(
-                  'assets/images/logo_kab.png',
-                  height: 36,
-                  fit: BoxFit.cover,
-                ),
-              ],
+                  Flexible(
+                    child: Image.asset(
+                      'assets/images/logo_kab.png',
+                      height: 36,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

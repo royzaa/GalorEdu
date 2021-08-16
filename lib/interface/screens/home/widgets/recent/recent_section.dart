@@ -30,56 +30,53 @@ class RecentSection extends StatelessWidget {
       }
     }
 
-    return InkWell(
-      onTap: () {},
-      child: SizedBox(
-        height: size.height * 1 / 4.5,
-        width: size.width * 2 / 3 * 3 / 5 - 30,
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            PageView.builder(
-              itemCount: listArticle!.length,
-              onPageChanged: (index) {
-                _currentRecentIndex = index;
-              },
-              controller: _pageController,
-              itemBuilder: (context, index) => RecentItem(
-                listArticle: listArticle,
-                articleIndex: index,
-                tagColor: Colors.black,
-              ),
+    return SizedBox(
+      height: size.height > 1600 ? size.height * 0.12 : size.height * 0.3,
+      width: size.width < 950 ? size.width : size.width * 2 / 3 * 3 / 5 - 30,
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          PageView.builder(
+            itemCount: listArticle!.length,
+            onPageChanged: (index) {
+              _currentRecentIndex = index;
+            },
+            controller: _pageController,
+            itemBuilder: (context, index) => RecentItem(
+              listArticle: listArticle,
+              articleIndex: index,
+              tagColor: Colors.black,
             ),
-            FittedBox(
-              child: Row(
-                children: [
-                  InkWell(
-                    onTap: prevPage,
-                    child: Container(
-                      color: const Color.fromRGBO(0, 0, 0, 0.2),
-                      padding: const EdgeInsets.all(2.0),
-                      child: const Icon(
-                        Icons.arrow_left_rounded,
-                        color: Colors.white,
-                      ),
+          ),
+          FittedBox(
+            child: Row(
+              children: [
+                InkWell(
+                  onTap: prevPage,
+                  child: Container(
+                    color: const Color.fromRGBO(0, 0, 0, 0.2),
+                    padding: const EdgeInsets.all(2.0),
+                    child: const Icon(
+                      Icons.arrow_left_rounded,
+                      color: Colors.white,
                     ),
                   ),
-                  InkWell(
-                    onTap: nextPage,
-                    child: Container(
-                      color: const Color.fromRGBO(0, 0, 0, 0.2),
-                      padding: const EdgeInsets.all(2.0),
-                      child: const Icon(
-                        Icons.arrow_right_rounded,
-                        color: Colors.white,
-                      ),
+                ),
+                InkWell(
+                  onTap: nextPage,
+                  child: Container(
+                    color: const Color.fromRGBO(0, 0, 0, 0.2),
+                    padding: const EdgeInsets.all(2.0),
+                    child: const Icon(
+                      Icons.arrow_right_rounded,
+                      color: Colors.white,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

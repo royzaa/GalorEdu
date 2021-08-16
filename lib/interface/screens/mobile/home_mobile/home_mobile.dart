@@ -130,7 +130,7 @@ class HomeMobile extends StatelessWidget {
                       ),
                     ),
                     const Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.only(bottom: 10, left: 20, right: 20),
                       child: Divider(
                         thickness: 1,
                         color: Colors.black87,
@@ -173,7 +173,7 @@ class HomeMobile extends StatelessWidget {
                       height: 10,
                     ),
                     Container(
-                      height: 300,
+                      height: 350,
                       width: size.width,
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: RecentlyAdded(listArticle: listArticle),

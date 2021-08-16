@@ -15,8 +15,7 @@ class CategorySection extends StatelessWidget {
     return DefaultTabController(
       length: 5,
       child: SizedBox(
-        width: size.width * 2 / 3 * 3 / 5 - 30,
-        // height: size.height * 0.5,
+        width: size.width < 950 ? size.width : size.width * 2 / 3 * 3 / 5 - 30,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -48,7 +47,9 @@ class CategorySection extends StatelessWidget {
             ),
             Flexible(
               child: SizedBox(
-                width: size.width * 2 / 3 * 2 / 3 - 20,
+                width: size.width < 950
+                    ? size.width
+                    : size.width * 2 / 3 * 3 / 5 - 30,
                 height: size.height * 0.55,
                 child: TabBarView(
                   children: [

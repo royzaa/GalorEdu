@@ -10,7 +10,7 @@ class RecentlyAdded extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Colors.transparent,
       child: Column(
         children: [
           Row(
@@ -40,8 +40,9 @@ class RecentlyAdded extends StatelessWidget {
           ),
           Flexible(
             child: SizedBox(
-              height: 300,
+              height: 350,
               child: ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: 3,
                 itemBuilder: (context, index) => ListTile(
                   leading: CircleAvatar(

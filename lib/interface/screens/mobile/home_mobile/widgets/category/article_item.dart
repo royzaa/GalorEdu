@@ -7,17 +7,18 @@ import '../../../../../Theme/drop_shadow_theme.dart';
 import '../../../../blog _screen/blog_sceen.dart';
 
 class ArticleItem extends StatelessWidget {
-  const ArticleItem({
-    Key? key,
-    required this.imageSource,
-    required this.imageUrl,
-    required this.tags,
-    required this.title,
-    required this.htmlStory,
-    required this.timeStamp,
-    required this.author,
-    required this.linkYt,
-  }) : super(key: key);
+  const ArticleItem(
+      {Key? key,
+      required this.imageSource,
+      required this.imageUrl,
+      required this.tags,
+      required this.title,
+      required this.htmlStory,
+      required this.timeStamp,
+      required this.author,
+      required this.linkYt,
+      required this.margin})
+      : super(key: key);
 
   final String imageUrl;
   final String title;
@@ -27,13 +28,14 @@ class ArticleItem extends StatelessWidget {
   final String timeStamp;
   final String author;
   final String linkYt;
+  final EdgeInsetsGeometry margin;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
       decoration: const BoxDecoration(boxShadow: [DropShadowTheme.appBar]),
-      margin: const EdgeInsets.only(right: 20),
+      margin: margin,
       child: InkWell(
         onTap: () {
           Navigator.push(
@@ -66,7 +68,8 @@ class ArticleItem extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(15),
               alignment: Alignment.bottomLeft,
-              height: size.height * 0.15,
+              height:
+                  size.height < 770 ? size.height * 0.3 : size.height * 0.15,
               width: size.width * 3 / 5,
               decoration: BoxDecoration(
                 gradient: MyGradients.whiteItemGradient,

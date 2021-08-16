@@ -34,9 +34,10 @@ class BlogScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            size.width < 800 ? const SizedBox() : app_bar.AppBar(size: size),
+            size.width < 550 ? const SizedBox() : app_bar.AppBar(size: size),
             SecondAppBar(constraints: size),
             const Divider(
               color: Colors.grey,
