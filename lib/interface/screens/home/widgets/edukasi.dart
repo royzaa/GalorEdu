@@ -6,6 +6,7 @@ import './recent/recent_section.dart';
 import './category/category_section.dart';
 import 'contributors/top_contributors.dart';
 import './recently_added.dart';
+import '../../mobile/home_mobile/widgets/search_engine.dart';
 
 class Edukasi extends StatelessWidget {
   const Edukasi({
@@ -56,6 +57,10 @@ class Edukasi extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       TextFormField(
+                        onTap: () => showSearch(
+                          context: context,
+                          delegate: SearchEngine(listArticle),
+                        ),
                         decoration: const InputDecoration(
                           labelText: 'Search',
                           fillColor: Colors.white,

@@ -10,6 +10,7 @@ import '../../home/widgets/contributors/contribute_modal.dart';
 import './widgets/contributors/top_contributors.dart';
 import './widgets/recently_added.dart';
 import '../../../footer.dart';
+import './widgets/search_engine.dart';
 
 class HomeMobile extends StatelessWidget {
   const HomeMobile({Key? key, required this.listArticle}) : super(key: key);
@@ -21,7 +22,6 @@ class HomeMobile extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     const choices = [
       {"page": "About", "route": AboutMobile()},
-      {"page": "Home", "route": ''},
       {"page": "Program", "route": ProgramMobile()}
     ];
 
@@ -46,16 +46,27 @@ class HomeMobile extends StatelessWidget {
           centerTitle: true,
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showSearch(
+                    context: context, delegate: SearchEngine(listArticle));
+              },
               icon: const Icon(Icons.search_rounded),
             ),
             PopupMenuButton<dynamic>(
+              onSelected: (value) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => value),
+                );
+              },
               itemBuilder: (context) {
                 return choices
                     .map(
                       (item) => PopupMenuItem(
-                        value: item["route"],
-                        child: Text(item["page"] as String),
+                        value: item["route"] as Widget,
+                        child: Text(
+                          item["page"] as String,
+                          style: const TextStyle(fontSize: 12),
+                        ),
                       ),
                     )
                     .toList();
