@@ -32,7 +32,7 @@ class CategorySection extends StatelessWidget {
                   text: 'Pembelajaran',
                 ),
                 Tab(
-                  text: 'Kreativitas',
+                  text: 'Lingkungan',
                 ),
                 Tab(
                   text: 'Ekonomi',
@@ -60,7 +60,7 @@ class CategorySection extends StatelessWidget {
                         category: Category.pembelajaran),
                     GridCategoryArticles(
                         listArticle: listArticle,
-                        category: Category.kreativitas),
+                        category: Category.lingkungan),
                     GridCategoryArticles(
                         listArticle: listArticle, category: Category.ekonomi),
                     GridCategoryArticles(

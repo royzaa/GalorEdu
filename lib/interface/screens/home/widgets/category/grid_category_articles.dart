@@ -5,7 +5,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../../../../../models/article.dart';
 import './category_article_item.dart';
 
-enum Category { kesehatan, pembelajaran, kreativitas, teknologi, ekonomi }
+enum Category { kesehatan, pembelajaran, lingkungan, teknologi, ekonomi }
 
 class GridCategoryArticles extends StatelessWidget {
   const GridCategoryArticles(
@@ -29,8 +29,8 @@ class GridCategoryArticles extends StatelessWidget {
       case Category.kesehatan:
         articleCat = getArticleByCategory('kesehatan');
         break;
-      case Category.kreativitas:
-        articleCat = getArticleByCategory('kreativitas');
+      case Category.lingkungan:
+        articleCat = getArticleByCategory('lingkungan');
         break;
       case Category.pembelajaran:
         articleCat = getArticleByCategory('pembelajaran');
